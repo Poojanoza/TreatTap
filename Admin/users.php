@@ -1,41 +1,27 @@
 <?php 
-$servername ="localhost";
-$username = "root";
-$password = "";
-$database = "userdata";
+$servername="localhost";
+$username= "root";
+$password= "";
+$database="userdata";
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn=mysqli_connect($servername, $username, $password, $database);
+
 if ($conn->connect_error) { 
     die("". $conn->connect_error);
 }else{
-    echo "connection succesfully";}
-
-    // if(isset($_POST['submit'])){
-
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-    $number = $_POST['mobile'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-//   echo "Name :".$name."<br>Mobile Number".$number."<br>Email Id"."<br>Password".$password."<br>Confirm password";
-
-    $sql = "INSERT INTO userdatas (name,mobileno,address,email,password) VALUES('$name','$address','$number','$email','$password')";
-
-    $countdata = "SELECT name,mobileno,address,email,password FROM userdatas";
-    $result = $conn->query($countdata);
-  if(mysqli_query($conn, $sql)){
-    echo "<script>alert('new added')</script>";
-    }
-else{
-    echo "Not Added in database";
+    echo "Congulation Poojan You Succesfully Achive Your first goal";
 }
 
-    // }
-    
-  
+
+$sql = "SELECT * FROM user_info ";
+$result= $conn->query($sql);
+$row_count = mysqli_num_rows($result);
 
 ?>
+
+
+
+
 
 
 
@@ -44,64 +30,156 @@ else{
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management</title>
     <link rel="stylesheet" href="users.css">
+    <style>
+        /* Header Style Start */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav {
+            margin-left: auto;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+
+        /* Button Style Start */
+
+        #back_button {
+            color: beige;
+            text-decoration: none;
+        }
+
+        k {
+            margin-left: 40px;
+        }
+
+
+        #usercount {
+            margin-right: 40px;
+            background-color: black;
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 4px;
+            color: white;
+            font-size: medium;
+        }
+
+        bt{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 22px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        bt:hover{
+            background-color: #45a049;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 </head>
+
 <body>
-    <h3> <a href="Admin.php">Back</a> </h3>
-    <header class="admin-header">
-        <h1>User Management</h1>
-        <a href="logout.php">Logout</a>
-    </header>
+    <center>
 
-    <nav class="admin-nav">
-        <!-- Navigation links here -->
-    </nav>
+        <header>
+            <h3>
+                <k><a href="Admin.php" id="back_button">
+                        <-Back</a> </h3> </k> <k>
+                            <h1>User Management</h1>
+                </k>
+                <nav>
+                    <h3 id="usercount">TOTAL USERS <br> <?php echo $row_count; ?> </h3>
 
-    <main class="admin-content">
-        <h2>User List</h2>
-        <table class="user-table">
-            <thead>
-                <tr>
-                <th>User Name</th>    
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-
-            <?php 
-                for($i = 0; $i < $result->num_rows; $i++){
-                    $row=mysqli_fetch_array($result);
-                
-                echo"<tbody>
-                <tr>
-                    <td>". $row['name'] ."</td>
-                    <td>". $row['email'] ."</td>
-                    <td>". $row['password'] ."</td>
+                </nav>
+        </header>
 
 
-                    <td>"?> <button id="Edit_button" style="background-color: red;">Edit</button>
-                    <?php echo"</td>
-                    <td>"?><button id="delete_button" >Delete</button><?php echo"</td></td>
 
-                </tr>
-            </tbody>";
-            }
-            
-            ?>
+
+
+        <!-- Table start -->
+
+
+
+
+
+
+
+        <br><br>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th class="button-cell">Modify</th>
+            </tr>
+            <tr>
+
+                <!-- start code for show user data -->
+                <?php 
+        if($result->num_rows > 0){  
+        
+            while($row = $result->fetch_assoc()){
+               ?> <tr?>
+                    <td> <?php echo $row["id"];?></td>
+                    <td> <?php echo $row["username"];?></td>
+                    <td> <?php echo $row["email"];?></td>
+                    <td>
+                        <bt> <a href='edit.php? ID= <?php echo $row["id"] ?> '>Edit</a></bt>
+                        <bt> <a href='delete.php? ID= <?php echo $row["id"] ?> '>Delete</a></bt>
+                    </td>
+            </tr>
+            <?php
+            }   
+        } else{
+            echo "Not Found User";
+        }
+        
+     
+        
+        ?>
+
+
+            </tr>
         </table>
-    </main>
+
+
+
+
+
+
+
+
+
 </body>
+
 </html>
-
-<?php 
-
-
-
-?>

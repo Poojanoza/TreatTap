@@ -41,7 +41,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $success=1;
         }else{
             dia(mysqli_error($conn));
-    
         }
 
     }    
@@ -130,6 +129,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <input type="password" id="confirm_password" name="confirm_password" >
             </div>
             <button type="submit" name="submit_button" >Sign Up</button>
+            <a href="/TreapTap/SignIn/SignIn.php">Already your Account ?</a>
         </form>
     </div>
 </body>

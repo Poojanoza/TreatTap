@@ -12,23 +12,13 @@
         <a href="logout.php">Logout</a>
     </header>
 
-    <?php 
-    $name = $_POST['name'];
-    $number = $_POST['mobile'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $c_password = $_POST['confirm_password'];
-
-//   echo "Name :".$name."<br>Mobile Number".$number."<br>Email Id"."<br>Password".$password."<br>Confirm password";
-
-
-echo "heloo";
-?>
+  
 
     <nav class="admin-nav">
         <ul>
-            <li><a href="users.php">Users</a></li>
-            <li><a href="products.html">Products</a></li>
+            <li><a href="users.php">Users Management</a></li>
+            <li><a href="products.html">Products Management</a></li>
+            <li><a href="products.html">Order Management</a></li>
         </ul>
     </nav>
 

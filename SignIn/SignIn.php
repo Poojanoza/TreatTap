@@ -56,6 +56,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <input type="password" id="password" name="password" >
             </div>
             <button type="submit">Sign In</button>
+            <a href="/TreapTap/SignUp/SignUp.php">New User ?</a>
         </form>
     </div>
 </body>
