@@ -6,8 +6,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     $mysqli=mysqli_init();
 
-    
-
     $username=$_POST['username'];
     $address=$_POST['address'];
     $mobile_no=$_POST['mobile_no'];
