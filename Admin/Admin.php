@@ -17,7 +17,7 @@
     <nav class="admin-nav">
         <ul>
             <li><a href="users.php">Users Management</a></li>
-            <li><a href="products.html">Products Management</a></li>
+            <li><a href="products.php">Products Management</a></li>
             <li><a href="products.html">Order Management</a></li>
         </ul>
     </nav>
