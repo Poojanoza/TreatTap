@@ -1,30 +1,53 @@
 <?php 
-$servername="localhost";
-$username= "root";
-$password= "";
-$database="userdata";
-
-$conn=mysqli_connect($servername, $username, $password, $database);
-
-if ($conn->connect_error) { 
-    die("". $conn->connect_error);
-}else{
-    echo "Congulation Poojan You Succesfully Achive Your first goal";
-}
+include 'C:\xampp\htdocs\TreapTap\Connection\Connection.php';
 
 
 $sql = "SELECT * FROM product_info ";
 $result= $conn->query($sql);
 $row_count = mysqli_num_rows($result);
 
+
+if(isset($_POST['add_to_cart'])){
+
+    $product_id = $_POST['product_id'];
+
+    $cart_check_sql=  "SELECT * from cart where  product_id = '$product_id'";
+    $cart_check_result = $conn->query($cart_check_sql);
+    
+    if($cart_check_result->num_rows>0){
+        echo "product already in cart";
+    }else{
+        $product_info_sql= "SELECT *  FROM product_info WHERE ID= '$product_id' ";
+        $product_info_result= $conn->query($product_info_sql);
+        
+        
+        if($product_info_result->num_rows>0){
+            $product_info= $product_info_result->fetch_assoc();
+            $insert_cart_sql = "INSERT INTO cart (product_id,product_name,product_image,product_price,quantity)      
+                 VALUES (
+                    '$product_id',
+                    '". $product_info['product_name'] ."',
+                    '". $product_info['image_url'] ."',
+                    '". $product_info['price'] ."',
+                        1
+                    )"  ;
+
+                  if($conn->query($insert_cart_sql)===TRUE){
+                    echo " product added succesfully in cart";
+                  }  else{
+                    echo "error adding product add to cart". $conn->error;
+                  }
+        }else{
+            echo "Product Not Found in database";
+        }
+    }    
+
+}
+
+
+
+
 ?>
-
-
-
-
-
-
-
 
 
 
@@ -87,11 +110,19 @@ header {
 </head>
 <body>
     <header>
+
+
+
+
+
+
+
         <h1>Product Page</h1>
         <div class="cart-icon">
             <a href="Product.php">
         <img src="Images/shopping-cart.png" alt="Shopping Cart"></a>
         <span class="cart-count">0</span>
+        <a href="Cart Page\cart.php">Cart</a>
     </div>
     </header>
 
@@ -111,7 +142,10 @@ header {
                    <h2><?php echo $row["product_name"];?></h2>
                    <p>  Price :<?php echo $row["price"];?></p>
                    <p class="price"><?php echo $row["description"];?></p>
-                   <button>Add to Cart</button>
+                   <form action="" method="post" >
+                   <input type="hidden" name="product_id" value="<?php echo $row["Id"]; ?>">
+                    <input type="submit" value="Add to cart" name="add_to_cart" >
+                   </form>
                </div>
            </div>
             <?php
