@@ -100,6 +100,7 @@ function dec(product_id){
     var see_value = document.getElementById('NumberOfProduct'+product_id);
     var current_value =parseInt(see_value.textContent);
 
+    
     if(current_value > 1){
         var new_value=current_value-1;
         see_value.textContent=new_value;
