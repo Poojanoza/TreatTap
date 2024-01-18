@@ -17,6 +17,7 @@ header {
 .cart-container {
     max-width: 800px;
     margin: 2em auto;
+    float: left;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
