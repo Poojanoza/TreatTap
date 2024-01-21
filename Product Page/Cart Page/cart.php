@@ -97,7 +97,7 @@ $row_count = mysqli_num_rows($result);
     <div class="cart-item">
       <img src="http://localhost/TreapTap/Admin/Images/<?php echo $row["product_image"]; ?>" alt="<?php echo $row["product_name"]; ?>">
       <span><?php echo $row["product_name"]; ?></span>
-      <span class="product-price"><?php echo $row["product_price"]; ?></span>
+      <span class="product-price<?php echo $row['product_id']; ?>" id="pp" ><?php echo $row["product_price"]; ?></span>
       <div class="quantity">
         <button onclick="decrementQuantity(<?php echo $row['product_id']; ?>)">-</button>
         <span id="quantity<?php echo $row['product_id']; ?>"><?php echo $row['quantity']; ?></span>
@@ -121,15 +121,17 @@ $row_count = mysqli_num_rows($result);
   </div>
 
   <script>
+    
     function incrementQuantity(id) {
       const quantityElement = document.getElementById(`quantity`+id);
       const totalElement = document.querySelector(`.total-price`+id);
       const currentQuantity = parseInt(quantityElement.textContent);
-      const price = document.querySelector(`.product-price`);
+      const price = document.querySelector(`.product-price`+id);
       const currentprice=parseInt(price.textContent)
       quantityElement.textContent = currentQuantity + 1;
       totalElement.textContent = (currentprice* (currentQuantity + 1)).toFixed(2);
-      console.log("this is incress successfully"+totalElement.textContent)
+      console.log("Product Price is "+currentprice)
+      console.log("this is incress successfully Total"+totalElement.textContent)
       updateTotal();
     }
 
@@ -139,7 +141,7 @@ $row_count = mysqli_num_rows($result);
       const currentQuantity = parseInt(quantityElement.textContent);
 
       if (currentQuantity > 1) {
-        const price = document.querySelector(`.product-price`);
+        const price = document.querySelector(`.product-price`+id);
         const currentprice=parseInt(price.textContent)
         quantityElement.textContent = currentQuantity - 1;
 
@@ -156,22 +158,24 @@ $row_count = mysqli_num_rows($result);
     }
 
     function updateTotal() {
-  const items = document.querySelectorAll('.cart-item');
-  let total = 0;
+        const items = document.querySelectorAll('[id^="pp"]');
+        let total = 0;
+        console.log("youuuuuuuuuuuu")
 
-  items.forEach(item => {
-    const priceElement = item.querySelector('.product-price');
-    const price = parseFloat(priceElement.textContent);
-    const quantity = parseInt(item.querySelector('.quantity span').textContent);
-    total += price * quantity;
-  });
+        items.forEach(item => {
+            const priceElement = item;
+            const price = parseFloat(priceElement.textContent);
+            const quantity = parseInt(item.nextElementSibling.querySelector('.quantity span').textContent); // Updated selector
+            total += price * quantity;
+        });
 
-  document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-}
-    function checkout() {
-      // Add your checkout logic here
-      alert("Checkout clicked. Add your checkout logic here.");
+        console.log("total"+total)
+        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
     }
+    // function checkout() {
+    //   // Add your checkout logic here
+    //   alert("Checkout clicked. Add your checkout logic here.");
+    // }
   </script>
 
 </body>
