@@ -1,5 +1,5 @@
 <?php 
-include 'C:\xampp\htdocs\TreapTap\Connection\Connection.php';
+include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
 
 
 $sql = "SELECT * FROM product_info ";
