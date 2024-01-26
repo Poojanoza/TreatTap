@@ -82,6 +82,7 @@ $row_count = mysqli_num_rows($result);
       border-radius: 4px;
     }
   </style>
+  <script src="jquery.js"></script>
 </head>
 <body>
   <header>
@@ -89,13 +90,15 @@ $row_count = mysqli_num_rows($result);
   </header>
   
   <div class="cart-container">
+  <div id="cart-message"></div>
+
     
   <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
         ?>
     <div class="cart-item">
-      <img src="http://localhost/TreapTap/Admin/Images/<?php echo $row["product_image"]; ?>" alt="<?php echo $row["product_name"]; ?>">
+      <img src="http://localhost/TreatTap/Admin/Images/<?php echo $row["product_image"]; ?>" alt="<?php echo $row["product_name"]; ?>">
       <span><?php echo $row["product_name"]; ?></span>
       <span class="product-price<?php echo $row['product_id']; ?>" id="pp" ><?php echo $row["product_price"]; ?></span>
       <div class="quantity">
@@ -103,8 +106,10 @@ $row_count = mysqli_num_rows($result);
         <span id="quantity<?php echo $row['product_id']; ?>"><?php echo $row['quantity']; ?></span>
         <button onclick="incrementQuantity(<?php echo $row['product_id']; ?>)">+</button>
       </div>
-      <span class="total-price<?php echo $row['product_id']; ?>"  ><?php echo $row['total_price'] ?></span>
-      <button onclick="removeItem(<?php echo $row['product_id']; ?>)">Remove</button>
+      <span class="total-price<?php echo $row['product_id']; ?>"  ><?php 
+       $row['total_price']=$row['product_price'] ;
+      echo $row['total_price'] ?></span>
+      <a href='removeCart.php? ID= <?php echo $row["id"] ?> '  >Remove</a>
     </div>
    
     <!-- Add more items as needed -->
@@ -130,9 +135,14 @@ $row_count = mysqli_num_rows($result);
       const currentprice=parseInt(price.textContent)
       quantityElement.textContent = currentQuantity + 1;
       totalElement.textContent = (currentprice* (currentQuantity + 1)).toFixed(2);
-      console.log("Product Price is "+currentprice)
-      console.log("this is incress successfully Total"+totalElement.textContent)
+      console.log("Product Price is:  "+currentprice)
+      console.log("this is incress successfully Total: "+totalElement.textContent)
+      const new_curre_quntatiy = parseInt(quantityElement.textContent)
       updateTotal();
+      const new_total_price =totalElement.textContent;
+      console.log("heeeeee"+new_total_price)
+      updateCart(id,new_curre_quntatiy,new_total_price);
+
     }
 
     function decrementQuantity(id) {
@@ -144,10 +154,15 @@ $row_count = mysqli_num_rows($result);
         const price = document.querySelector(`.product-price`+id);
         const currentprice=parseInt(price.textContent)
         quantityElement.textContent = currentQuantity - 1;
-
-        totalElement.textContent = `$${(currentprice * (currentQuantity - 1)).toFixed(2)}`;
-        console.log("this is decress successfully"+totalElement.textContent)
+        const new_curre_quntatiy = parseInt(quantityElement.textContent);
+      totalElement.textContent = (currentprice* (currentQuantity - 1)).toFixed(2);
+        
         updateTotal();
+        const new_total_price =totalElement.textContent;
+        console.log("Total Price of Descress for UpdateCart Funcation: "+new_total_price)
+        updateCart(id,new_curre_quntatiy,new_total_price);
+
+        console.log("Product Id is:"+id+" Product Quantity: "+new_curre_quntatiy+" Product Total Price: "+new_total_price)
       }
     }
 
@@ -160,7 +175,6 @@ $row_count = mysqli_num_rows($result);
     function updateTotal() {
         const items = document.querySelectorAll('[id^="pp"]');
         let total = 0;
-        console.log("youuuuuuuuuuuu")
 
         items.forEach(item => {
             const priceElement = item;
@@ -169,8 +183,32 @@ $row_count = mysqli_num_rows($result);
             total += price * quantity;
         });
 
-        console.log("total"+total)
+        console.log("total"+total);
         document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+    }
+
+    function updateCart(product_id,quantity,total_price){
+      console.log("this updateCart id: "+product_id+"quantity: "+quantity)
+      $.ajax({
+        type: "POST",
+        url: "updateCart.php",
+        data: {
+          product_id:product_id,
+          quantity:quantity,
+          total_price:total_price,
+        },
+        success:function(resoponse){
+          if (response === "Cart updated successfully!") {
+            $("#cart-message").text("Cart updated successfully!");
+            } else {
+                $("#cart-message").text("Error: " + response);
+            }
+        },
+        error: function(error) {
+            // Handle errors, if any
+            console.error("Error:", error);
+        }
+      })
     }
     // function checkout() {
     //   // Add your checkout logic here
