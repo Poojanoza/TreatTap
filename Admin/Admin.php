@@ -18,7 +18,7 @@
         <ul>
             <li><a href="users.php">Users Management</a></li>
             <li><a href="products.php">Products Management</a></li>
-            <li><a href="products.html">Order Management</a></li>
+            <li><a href="order_info.php">Order Management</a></li>
         </ul>
     </nav>
 

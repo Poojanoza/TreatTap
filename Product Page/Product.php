@@ -1,4 +1,15 @@
 <?php 
+
+session_start();
+ini_set('display_errors','Off');
+
+$userId = $_SESSION['user_id'];
+
+if($userId === null){
+    echo "Please Login ";
+}
+
+
 include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
 
 
@@ -6,12 +17,18 @@ $sql = "SELECT * FROM product_info ";
 $result= $conn->query($sql);
 $row_count = mysqli_num_rows($result);
 
-
 if(isset($_POST['add_to_cart'])){
+
+    if($userId === null){
+
+        header('Location: ..\SignIn\SignIn.php');
+    exit();
+
+    }else{   
 
     $product_id = $_POST['product_id'];
 
-    $cart_check_sql=  "SELECT * from cart where  product_id = '$product_id'";
+    $cart_check_sql=  "SELECT * from cart where  product_id = '$product_id' AND user_id = '$userId'";
     $cart_check_result = $conn->query($cart_check_sql);
     
     if($cart_check_result->num_rows>0){
@@ -23,8 +40,9 @@ if(isset($_POST['add_to_cart'])){
         
         if($product_info_result->num_rows>0){
             $product_info= $product_info_result->fetch_assoc();
-            $insert_cart_sql = "INSERT INTO cart (product_id,product_name,product_image,product_price,quantity)      
+            $insert_cart_sql = "INSERT INTO cart (user_id,product_id,product_name,product_image,product_price,quantity)      
                  VALUES (
+                    '$userId',
                     '$product_id',
                     '". $product_info['product_name'] ."',
                     '". $product_info['image_url'] ."',
@@ -40,7 +58,8 @@ if(isset($_POST['add_to_cart'])){
         }else{
             echo "Product Not Found in database";
         }
-    }    
+    }   
+} 
 
 }
 
@@ -110,13 +129,7 @@ header {
 </head>
 <body>
     <header>
-
-
-
-
-
-
-
+        <a href="../Index.php">Back</a>
         <h1>Product Page</h1>
         <div class="cart-icon">
             <a href="Product.php">

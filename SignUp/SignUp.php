@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $success=0;
 $user=0;
 if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -36,7 +37,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     
         if($result){    
             // echo "Successfully inserted";
+            $_SESSION['username']= $username;
+            $_SESSION['user_id'] = mysqli_insert_id($conn); // Get the ID of the last inserted row
+            header("Location: /TreatTap/Index.php");
+            // echo "Welcome to ".$_SESSION['email_id'];
+            // header("Location: /TreatTap/Index.php");
             $success=1;
+
+            exit();
         }else{
             dia(mysqli_error($conn));
         }
