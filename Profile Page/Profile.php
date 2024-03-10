@@ -1,4 +1,21 @@
+<?php 
+session_start();
+include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
 
+$userId = $_SESSION['user_id'];
+
+if ($userId === null) {
+?>
+
+  <script>
+    alert("Please Login Requreid");
+  </script>
+<?php
+  header('Location: /TreatTap/SignIn/SignIn.php');
+  exit();
+} else {
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,3 +104,4 @@
 
 </body>
 </html>
+<?php }?>

@@ -114,6 +114,8 @@ if ($userId === null) {
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
 
+           $product_total_price = $row['product_price'] * $row['quantity'];
+
       ?>
           <div class="cart-item">
             <img src="http://localhost/TreatTap/Admin/Images/<?php echo $row["product_image"]; ?>" alt="<?php echo $row["product_name"]; ?>">
@@ -135,14 +137,14 @@ if ($userId === null) {
               <span class="total-price<?php echo $row['product_id']; ?>">
                 <?php
 
-                $original_price = $row["product_price"];
+                $original_price = $product_total_price;
                 $update_original_price_sql = "UPDATE cart SET total_price = '$original_price' WHERE id = '{$row['id']}'";
-                echo $original_price;
                 if ($conn->query($update_original_price_sql) === TRUE) { // If the update query is successful
-                  // echo "Original price updated successfully for product ID: " . $row['id'];
+                    // echo "Original price updated successfully for product ID: " . $row['id'];
                 } else {
                   // echo "Error updating original price: " . $conn->error; // If there's an error updating the original price
                 }
+                echo $original_price;
 
                 ?> <!-- Display the total price for each product -->
 
@@ -251,10 +253,7 @@ if ($userId === null) {
           }
         })
       }
-      // function checkout() {
-      //   // Add your checkout logic here
-      //   alert("Checkout clicked. Add your checkout logic here.");
-      // }
+      
     </script>
 
   </body>

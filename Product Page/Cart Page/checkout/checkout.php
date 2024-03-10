@@ -9,6 +9,7 @@ $row = $result->fetch_assoc();
 $sql2 = "SELECT * FROM cart WHERE  user_id= '$userId' ";
 $result2 = $conn->query($sql2);
 $row_count = mysqli_num_rows($result2);
+$total_price_all_products = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +78,7 @@ $row_count = mysqli_num_rows($result2);
     <center>
       <h2>Checkout</h2>
     </center>
-    <form action="#" method="post" id="checkout-form">
+    <form action="payment.php" method="post" id="checkout-form">
 
       <div id="address_div">
         <h3>Shipping Info
@@ -138,17 +139,32 @@ $row_count = mysqli_num_rows($result2);
             </thead>
 
 
+<?php 
+  $total_price_all_products+=$row["total_price"];
+
+} }
 
 
 
-<?php } }?>
+
+?>
           </tbody>
         </table>
 
       </div>
 
-
-      <a href="payment.php">Process For Payment</a>
+      <?php 
+echo "total price: ".$total_price_all_products;?>
+<br>
+  
+  <h4>Which type you like Perefer to Payment ?</h4>
+  <input type="radio" name="payment_mode" value="online" >Online <br>
+  <input type="radio" name="payment_mode" value="offline">Cash on Delivry
+  <input type="hidden" name="total_amount" value="<?php 
+echo $total_price_all_products;?>" >
+  
+  <br>
+      <input type="submit" value="Process For Payment" name="submit" >
     </form>
   </div>
 
