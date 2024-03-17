@@ -35,18 +35,13 @@ if (isset($_POST['pay_now'])) {
             if ($result1->num_rows > 0) {
                 // echo "hellloo";
                 // }else{
-            $sql_delete_cart = "DELETE FROM cart WHERE user_id = '$userId'";
-            if ($conn->query($sql_delete_cart) === TRUE) {
-                echo "Products removed from cart successfully";
-            } else {
-                echo "Error removing products from cart: " . $conn->error;
-            }
+           
                     $time_store = $currentDateTime;
                 $user_info = $result1->fetch_assoc();
                 $order_table = "INSERT INTO order_info (user_id, user_name,order_date,order_time,total_amount,payment_method) 
                 VALUES (
                     '$userId',
-                    '" . $user_info['username'] . "',
+                    '".$user_info['username']."',
                     ' $order_date',
                     '$time_store',
                     '$total_amount',
@@ -68,9 +63,7 @@ if (isset($_POST['pay_now'])) {
             INNER JOIN user_info ON cart.user_id=user_info.id 
             WHERE cart.user_id = '$userId'"; // Filter by user ID
     
-    
-    
-    
+        
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {
@@ -78,16 +71,23 @@ if (isset($_POST['pay_now'])) {
             $productName = $row["product_name"];
             $quantity = $row["quantity"];
             $totalPrice = $row["total_price"];
+            $product_id = $row["product_id"];
     
             // Insert data into product_order_info table
-            $product_order = "INSERT INTO product_order_info (order_id,order_date,order_time,user_id, product_name, product_quntatiy, product_total_price)
-                              VALUES ('$order_id','$order_date','$time_store','$userId', '$productName', '$quantity', '$totalPrice')";
+            $product_order = "INSERT INTO product_order_info (order_id,order_date,order_time,user_id,product_id,product_name, product_quntatiy, product_total_price)
+                              VALUES ('$order_id','$order_date','$time_store','$userId','$product_id','$productName', '$quantity', '$totalPrice')";
     
             if ($conn->query($product_order) === TRUE) {
                 echo "Product order info inserted successfully.<br>";
             } else {
                 echo "Error inserting product order info: " . $conn->error . "<br>";
             }
+        }
+        $sql_delete_cart = "DELETE FROM cart WHERE user_id = '$userId'";
+        if ($conn->query($sql_delete_cart) === TRUE) {
+            echo "Products removed from cart successfully";
+        } else {
+            echo "Error removing products from cart: " . $conn->error;
         }
     } else {
         echo "No products in cart.<br>";
