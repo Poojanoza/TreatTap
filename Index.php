@@ -12,7 +12,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treat-Tap</title>
-    <link rel="stylesheet" href="index files/index_style.css">
+    <link rel="stylesheet" href="index files/index_styles.css">
 </head>
 
 <body>

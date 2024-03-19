@@ -1,0 +1,141 @@
+@font-face {
+    font-family: "MadimiOne";
+    src: url(Fonts/Madimi_One/MadimiOne-Regular.ttf);
+}
+@font-face {
+    font-family: "Merienda";
+    src: url(Fonts/Merienda/Merienda-VariableFont_wght.ttf);
+}
+*{
+    font-family:"Merienda" ;
+}
+body{
+    background: rgba(255, 255, 255, 1);
+}
+
+.main_container{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;    
+}
+.heading_container{
+    display: flex;
+    flex-direction: row;
+    /* gap: 200px; */
+    width: 100%;
+}
+.company_name{
+    width: 100%;
+    font-size: 20px;
+    font-size: 35px;
+}
+.heading_title{
+    font-size: 35px;
+    width: 100%;
+    text-align: center;
+    background-color: #FFE4C4;
+
+}
+.back_button{
+    width: 100%;
+    text-align: center;
+}
+.back_button a{
+    text-decoration: none;
+    font-size: 35px;
+    color: black;
+}
+
+.heading_title:hover, .back_button a:hover{
+    font-weight: bolder;
+}
+
+.form_container{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.two_container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.first_container{
+    width: 100%;
+    object-fit: cover;
+}
+.first_container img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+form{
+    border: solid 2px;
+    padding: 20px;
+    background-color:rgba(242, 242, 242, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+input{
+    border: 1px solid #F2F2F2;
+    width: 100%;
+    height: 50px;
+}
+
+.password_input{
+    display: flex;
+    gap: 5px;
+}
+
+.password_input input{
+    width: 80%;
+}
+
+.password_input button{
+    width: 20%;
+}
+
+.submit_button,.password_input button{
+    background-color: rgb(255,255,255);
+    font-size: 15px;
+    transition: font-size 0.3s ease-in-out;
+}
+.submit_button{
+    width: 50%;
+    align-self: center;
+    font-size: 15px;
+    transition: font-size 0.2s ease-in-out;
+}
+
+.submit_button:hover,.password_input button:hover{
+    font-weight: bolder;
+    font-size: 18px;
+}
+@media screen and (max-width:600px) {
+    .heading_container{
+        display: flex;
+        /* flex-direction: column; */
+    }
+    .two_container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .form_container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}

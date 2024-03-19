@@ -26,6 +26,7 @@ body{
     width: 100%;
     display: flex;
     align-items: center;
+    background-color: #a21c1c32;
     margin:  0 auto;
 }
 

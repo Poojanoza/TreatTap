@@ -47,39 +47,72 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 ?>
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="SignIn.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="SignIn_style.css">
 </head>
 <body>
-    <div class="signin-container">
-        <h1>Sign In</h1>
-        <?php if(isset($error)): ?>
-            <div class="error"><?php echo $error; ?></div>
+    <div class="main_container">
+
+        <div class="heading_container">
+            <div class="company_name">
+                TreatTap
+            </div>
+            
+            <div class="back_button">
+                <a href="../Index.php">Back</a>
+            </div>
+        </div>
+
+        <div class="heading_title" >
+            Sign in
+        </div>
+
+        <!-- <div class="two_container"> -->
+
+            <!-- <div class="first_container">
+                <img src="img/images.jpg" alt="">
+            </div> -->
+            <?php if(isset($error)): ?>
+            <?php echo $error; ?>
         <?php endif; ?>
-        <form action="SignIn.php" method="post" >
-            <div class="input-container">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" >
+        <div class="form_container" >
+            <form action="SignIn.php" method="post">
+            <label for="">Email ID</label>
+            <input type="email" placeholder="Enter Your Email"id="email" name="email"><br><br>
+            <label for="">Password:</label>
+            <div class="password_input">
+            <input type="password" placeholder="Enter Your Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one digit, one uppercase letter, one lowercase letter, and be at least 8 characters long" required>
+            <button type="button" id="showPassword">Show</button>
             </div>
-            <div class="input-container">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" >
-            </div>
-            <button type="submit">Sign In</button>
-            <a href="/TreatTap/SignUp/SignUp.php">New User ?</a>
-        </form>
+            <br><br><input type="submit" value="Sign In" class="submit_button"> 
+            <br>
+            <center>
+            <a href="/TreatTap/SignUp/SignUp.php">New User?</a></center>
+            </form>
+        </div>
+    <!-- </div> -->
+
     </div>
+
+    <script>
+        var showPasswordButton = document.getElementById("showPassword");
+        var passwordInput = document.getElementById("password");
+    
+        showPasswordButton.addEventListener("click", function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                showPasswordButton.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                showPasswordButton.textContent = "Show";
+            }
+        });
+    </script>
+    
 </body>
 </html>
