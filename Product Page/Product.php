@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 session_start();
-ini_set('display_errors','Off');
+ini_set('display_errors', 'Off');
 
 $userId = $_SESSION['user_id'];
 
-if($userId === null){
+if ($userId === null) {
     echo "Please Login ";
 }
 
@@ -14,52 +14,52 @@ include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
 
 
 $sql = "SELECT * FROM product_info ";
-$result= $conn->query($sql);
+$result = $conn->query($sql);
 $row_count = mysqli_num_rows($result);
 
-if(isset($_POST['add_to_cart'])){
+if (isset($_POST['add_to_cart'])) {
 
-    if($userId === null){
+    if ($userId === null) {
 
         header('Location: ..\SignIn\SignIn.php');
-    exit();
+        exit();
 
-    }else{   
+    } else {
 
-    $product_id = $_POST['product_id'];
+        $product_id = $_POST['product_id'];
 
-    $cart_check_sql=  "SELECT * from cart where  product_id = '$product_id' AND user_id = '$userId'";
-    $cart_check_result = $conn->query($cart_check_sql);
-    
-    if($cart_check_result->num_rows>0){
-        echo "product already in cart";
-    }else{
-        $product_info_sql= "SELECT *  FROM product_info WHERE ID= '$product_id' ";
-        $product_info_result= $conn->query($product_info_sql);
-        
-        
-        if($product_info_result->num_rows>0){
-            $product_info= $product_info_result->fetch_assoc();
-            $insert_cart_sql = "INSERT INTO cart (user_id,product_id,product_name,product_image,product_price,quantity)      
+        $cart_check_sql = "SELECT * from cart where  product_id = '$product_id' AND user_id = '$userId'";
+        $cart_check_result = $conn->query($cart_check_sql);
+
+        if ($cart_check_result->num_rows > 0) {
+            echo "product already in cart";
+        } else {
+            $product_info_sql = "SELECT *  FROM product_info WHERE ID= '$product_id' ";
+            $product_info_result = $conn->query($product_info_sql);
+
+
+            if ($product_info_result->num_rows > 0) {
+                $product_info = $product_info_result->fetch_assoc();
+                $insert_cart_sql = "INSERT INTO cart (user_id,product_id,product_name,product_image,product_price,quantity)      
                  VALUES (
                     '$userId',
                     '$product_id',
-                    '". $product_info['product_name'] ."',
-                    '". $product_info['image_url'] ."',
-                    '". $product_info['price'] ."',
+                    '" . $product_info['product_name'] . "',
+                    '" . $product_info['image_url'] . "',
+                    '" . $product_info['price'] . "',
                         1
-                    )"  ;
+                    )";
 
-                  if($conn->query($insert_cart_sql)===TRUE){
+                if ($conn->query($insert_cart_sql) === TRUE) {
                     echo " product added succesfully in cart";
-                  }  else{
-                    echo "error adding product add to cart". $conn->error;
-                  }
-        }else{
-            echo "Product Not Found in database";
+                } else {
+                    echo "error adding product add to cart" . $conn->error;
+                }
+            } else {
+                echo "Product Not Found in database";
+            }
         }
-    }   
-} 
+    }
 
 }
 
@@ -72,126 +72,140 @@ if(isset($_POST['add_to_cart'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Product.css">
+    <link rel="stylesheet" href="Product_styles.css">
     <title>Product Page</title>
     <style>
-        #searchInput {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-.search-container {
-    text-align: center;
-    margin: 20px 0;
-}
 
-#searchInput:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 1em 2em;
-}
-
-.cart-icon {
-    position: relative;
-    cursor: pointer;
-    padding: 30px;
-}
-
-.cart-icon img {
-    width: 30px; /* Adjust the width of the cart icon */
-    height: 30px;
-}
-
-.cart-count {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 50%;
-    padding: 5px 8px;
-    font-size: 14px;
-}
     </style>
 </head>
+
 <body>
-    <header>
-        <a href="../Index.php">Back</a>
-        <h1>Product Page</h1>
-        <div class="cart-icon">
-            <a href="Product.php">
-        <img src="Images/shopping-cart.png" alt="Shopping Cart"></a>
-        <span class="cart-count">0</span>
-        <a href="Cart Page\cart.php">Cart</a>
-    </div>
-    </header>
+    <div class="main_container">
 
-    <main>
-    <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search products...">
-            <button onclick="searchProducts()">Search</button>
+        <div class="heading_container">
+            <div class="h1_container">
+                TreatTap
+            </div>
+
+            <div class="h2_container">
+                <div class="h2_in1_container">
+                    <a href="../Index.php">Home</a>
+                    <a href="http://">Products</a>
+                    <!-- <a href="http://">About Us</a>
+                    <a href="http://">Extra</a>
+                    <a href="SignIn/SignIn.html">Sign In</a>
+                    <a href="SignUp/SignUp.html">Sign Up</a> -->
+                    <a href="Cart Page\cart.php"> <img class="svg_image"
+                            src="Icons/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Cart</a>
+
+                    <a href="http://"> <img class="svg_image"
+                            src="Icons/account_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" width="30px">
+                    </a>
+                    <!-- <a href="http://">Log Out</a> -->
+
+                </div>
+                <div class="h2_in2_container">
+
+                </div>
+
+            </div>
+
         </div>
-        <section class="product-container">
-            <?php 
-        if($result->num_rows > 0){  
-        
-            while($row = $result->fetch_assoc()){
-               ?>   <div class="product">
-               <img src="../Admin/Images/<?php echo $row["image_url"];?>">
-               <div class="product-details">
-                   <h2><?php echo $row["product_name"];?></h2>
-                   <p>  Price :<?php echo $row["price"];?></p>
-                   <p class="price"><?php echo $row["description"];?></p>
-                   <form action="" method="post" >
-                   <input type="hidden" name="product_id" value="<?php echo $row["Id"]; ?>">
-                    <input type="submit" value="Add to cart" name="add_to_cart" >
-                   </form>
-               </div>
-           </div>
-            <?php
-            }   
-        } else{
-            echo "Not Found User";
-        }
-        
-        ?>
+        <div class="t_container">
+            Our Products
+        </div>
 
-        </section>
-    </main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <button onclick="searchProducts()" id="search_button" > <img src="Icons/search_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
+        </div>
+        <!-- <div class="t_container">
+            Our Products
+        </div> -->
 
-    <script>
-        function searchProducts() {
-            var input, filter, products, product, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            products = document.getElementsByClassName("product");
 
-            for (i = 0; i < products.length; i++) {
-                product = products[i].getElementsByClassName("product-details")[0];
-                txtValue = product.textContent || product.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    products[i].style.display = "";
+
+
+
+        <div class="fourth_container">
+
+            <div class="products">
+
+
+                <?php
+                if ($result->num_rows > 0) {
+
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                        <div class="product_box">
+
+                            <div class="product_img_box">
+
+                                <img src="../Admin/Images/<?php echo $row["image_url"]; ?>" class="product_image">
+                            </div>
+                            <div class="product_cart_button">
+                                <form action="" method="post">
+                                    <input type="submit" value="Add to cart" name="add_to_cart" class="add_cart">
+                                    <input type="hidden" name="product_id" value="<?php echo $row["Id"]; ?>">
+                                </form>
+                            </div>
+                            <div class="product_text_area">
+                                <div class="star_rating">
+                                    <img src="Images/Rating Group.svg" alt="">
+                                </div>
+                                <div class="product_name">
+
+                                    <?php echo $row["product_name"]; ?>
+                                </div>
+                                <div class="product_price">
+
+                                    Price :
+                                    <?php echo $row["price"]; ?>
+                                </div>
+
+                                <?php echo $row["description"]; ?>
+
+
+                            </div>
+                        </div>
+                        <?php
+                    }
                 } else {
-                    products[i].style.display = "none";
+                    echo "Not Found User";
                 }
-            }
-        }
-    </script>
-    <footer>
-        <p>&copy; 2023 TreapTap Sweet Store E-Commerce website</p>
-    </footer>
+
+                ?>
+
+            </div>
+
+
+            <script>
+                function searchProducts() {
+                    var input, filter, products, product, i, txtValue;
+                    input = document.getElementById("searchInput");
+                    filter = input.value.toUpperCase();
+                    products = document.getElementsByClassName("product_box");
+
+                    for (i = 0; i < products.length; i++) {
+                        product = products[i].getElementsByClassName("product_name")[0];
+                        txtValue = product.textContent || product.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            products[i].style.display = "";
+                        } else {
+                            products[i].style.display = "none";
+                        }
+                    }
+                }
+            </script>
+            <footer>
+                <p>&copy; 2024 TreapTap Sweet Store E-Commerce website</p>
+            </footer>
+
+        </div>
 </body>
+
 </html>
