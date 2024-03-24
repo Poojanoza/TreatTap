@@ -20,13 +20,13 @@ $final_value = $payment_type;
 
 $final_total_value = $total_amount;
 
-echo "final value is ". $final_value;
+echo "final value is " . $final_value;
 
 if ($final_value == "online") {
     // header('Location: process_payment.php ');
     // exit();
 
-   
+
     if ($userId === null) {
         echo "Please Login ";
     }
@@ -107,59 +107,20 @@ if ($final_value == "online") {
     <body>
         <div class="container">
             <h1>Payment Details</h1>
-            <?php
-
-            // $sql = "SELECT product_name,user_id, quantity, total_price, user_info.username AS username, cart.product_id AS product_id FROM cart INNER JOIN user_info ON cart.user_id=user_info.id ";
-
-            // $result = $conn->query($sql);
-
-            // if ($result->num_rows > 0) {
-        
-            //     $cart_i = $row['user_id'];
-            //     $user_i = $row['id'];
-            //     while ($row = $result->fetch_assoc()) {
-            //         if ($row['user_id'] === $userId) {
-        
-            //             // Access and display the product ID and username
-            //             $username = $row["username"];
-            //             $productName = $row["product_name"];
-            //             $product_id = $row["product_id"];
-            //             $g = $row["quantity"];
-            //             // $product
-        
-            //             echo "helloo" . $cart_i;
-            //             echo $user_i;
-            //             echo "Product ID: $product_id";
-            //             echo "<br>";
-            //             echo "Product Name: $productName";
-            //             echo "quntatiy: " . $g;
-            //             echo "<br>";
-        
-            //         }
-            //     }
-            //     echo "Username: $username";
-        
-            // } else {
-            //     echo "No products in cart";
-            // }
-        
-            //     ?>
-
-
             <form action="process_payment.php" method="post">
                 <label for="card-number">Card Number:</label>
-                <input type="text" id="card-number" name="card-number" >
+                <input type="text" id="card-number" name="card-number">
 
                 <label for="expiry">Expiration Date:</label>
-                <input type="text" id="expiry" name="expiry" placeholder="MM/YYYY" >
+                <input type="text" id="expiry" name="expiry" placeholder="MM/YYYY">
 
                 <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" >
+                <input type="text" id="cvv" name="cvv">
 
                 <label for="name">Name on Card:</label>
-                <input type="text" id="name" name="name" >
-                <input type="hidden" name="payment_type" value="<?php echo $payment_type ?> " >
-                <input type="hidden" name="total_amount" value="<?php echo $final_total_value ?> " >
+                <input type="text" id="name" name="name">
+                <input type="hidden" name="payment_type" value="<?php echo $payment_type ?> ">
+                <input type="hidden" name="total_amount" value="<?php echo $final_total_value ?> ">
 
                 <button type="submit" name="pay_now">Pay Now</button>
 
@@ -168,7 +129,7 @@ if ($final_value == "online") {
 
             <?php
 
-             }else if ($final_value == "offline") {
+} else if ($final_value == "offline") {
     // echo "Order on the way";
     echo "<br>total amount: " . $total_amount;
 
@@ -188,7 +149,7 @@ if ($final_value == "online") {
     } else {
 
         // Entry in order_info ,payment_info,product_order_info 
-        
+
         date_default_timezone_set('Asia/Kolkata');
         $currentDateTime = date('H:i:s');
         $order_id = null;
@@ -198,8 +159,8 @@ if ($final_value == "online") {
         if ($result1->num_rows > 0) {
             // echo "hellloo";
             // }else{
-           
-                $time_store = $currentDateTime;
+
+            $time_store = $currentDateTime;
             $user_info = $result1->fetch_assoc();
             $order_table = "INSERT INTO order_info (user_id, user_name,order_date,order_time,total_amount,payment_method) 
             VALUES (
@@ -219,9 +180,9 @@ if ($final_value == "online") {
             }
 
         }
-// ---------------------------SECOUND TABLE DATA INSERT ---------------------------------
+        // ---------------------------SECOUND TABLE DATA INSERT ---------------------------------
 
-$sql = "SELECT product_name, user_id, quantity, total_price, user_info.username AS username, cart.product_id AS product_id 
+        $sql = "SELECT product_name, user_id, quantity, total_price, user_info.username AS username, cart.product_id AS product_id 
         FROM cart 
         INNER JOIN user_info ON cart.user_id=user_info.id 
         WHERE cart.user_id = '$userId'"; // Filter by user ID
@@ -229,36 +190,36 @@ $sql = "SELECT product_name, user_id, quantity, total_price, user_info.username 
 
 
 
-$result = $conn->query($sql);
+        $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $productName = $row["product_name"];
-        $quantity = $row["quantity"];
-        $totalPrice = $row["total_price"];
-        $product_id = $row["product_id"];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $productName = $row["product_name"];
+                $quantity = $row["quantity"];
+                $totalPrice = $row["total_price"];
+                $product_id = $row["product_id"];
 
 
-        // Insert data into product_order_info table
-        $product_order = "INSERT INTO product_order_info (order_id,order_date,order_time,user_id,product_id, product_name, product_quntatiy, product_total_price)
+                // Insert data into product_order_info table
+                $product_order = "INSERT INTO product_order_info (order_id,order_date,order_time,user_id,product_id, product_name, product_quntatiy, product_total_price)
                           VALUES ('$order_id','$order_date','$time_store','$userId','$product_id', '$productName', '$quantity', '$totalPrice')";
 
-        if ($conn->query($product_order) === TRUE) {
-            echo "Product order info inserted successfully.<br>";
+                if ($conn->query($product_order) === TRUE) {
+                    echo "Product order info inserted successfully.<br>";
+                } else {
+                    echo "Error inserting product order info: " . $conn->error . "<br>";
+                }
+            }
+            $sql_delete_cart = "DELETE FROM cart WHERE user_id = '$userId'";
+            if ($conn->query($sql_delete_cart) === TRUE) {
+                echo "Products removed from cart successfully";
+            } else {
+                echo "Error removing products from cart: " . $conn->error;
+            }
         } else {
-            echo "Error inserting product order info: " . $conn->error . "<br>";
+            echo "No products in cart.<br>";
         }
-    }
-    $sql_delete_cart = "DELETE FROM cart WHERE user_id = '$userId'";
-    if ($conn->query($sql_delete_cart) === TRUE) {
-        echo "Products removed from cart successfully";
-    } else {
-        echo "Error removing products from cart: " . $conn->error;
-    }
-} else {
-    echo "No products in cart.<br>";
-}        
-// date_default_timezone_set('Asia/Kolkata');
+        // date_default_timezone_set('Asia/Kolkata');
 // $currentDateTime = date('H:i:s');
 // echo $currentDateTime;
 
@@ -277,6 +238,8 @@ if ($result->num_rows > 0) {
 
 
             <?php
+            header('Location: ConfirmOrder.php');
+            exit();
 } ?>
 
     </div>
