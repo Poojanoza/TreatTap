@@ -4,6 +4,10 @@ include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
 
 $userId = $_SESSION['user_id'];
 
+$sql = "SELECT * FROM user_info WHERE id=$userId";
+$result= $conn->query($sql);
+$row = $result->fetch_assoc() ;
+
 if ($userId === null) {
 ?>
 
@@ -85,20 +89,29 @@ if ($userId === null) {
       font-size: 14px;
     }
   }
+#back_button a{
+  text-decoration: none;
+  color: black;
+}
 </style>
 </head>
 <body>
-
+  <h1 id="back_button" >
+  <a href="../Index.php">Back</a></h1>
+  <center>
+<h1>Profile</h1></center>
 <div class="container">
   <div class="profile">
     <img src="—Pngtree—avatar icon profile icon member_5247852.png" alt="Profile Picture">
-    <h1>John Doe</h1>
-    <p>ID: JDE1234</p>
-    <p>Address: 123 Main St, Apt 2B</p>
-    <p>Pincode: 10001</p>
-    <p>Email: john@example.com</p>
-    <p>Mobile No: +1 123-456-7890</p>
-    <a href="#" class="btn">Edit Profile</a>
+    <h1> <?php echo $row['username']?> </h1>
+    <p>ID: <?php echo $row['id']?></p>
+    <p>Address: <?php echo $row['address']?></p>
+    <p>Pincode: <?php echo $row['pincode']?></p>
+    <p>Email: <?php echo $row['email']?></p>
+    <p>Mobile No: <?php echo $row['mobile_no']?></p>
+    <p>State: <?php echo $row['state']?></p>
+    <p>City: <?php echo $row['city']?></p>
+    <a href="change_address.php" class="btn">Edit Profile</a>
   </div>
 </div>
 

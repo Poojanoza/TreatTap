@@ -121,6 +121,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             <input type="text" placeholder="Enter Your Address" name="address" ><br><br>
             <label for="">City</label>
             <input type="text" placeholder="Enter Your city" name="city" ><br><br>
+            <label for="">State</label>
+            <input type="text" placeholder="Enter Your State" name="state" ><br><br>
             <label for="">Pincode</label>
             <input type="text" placeholder="Enter Your pincode" name="pincode" ><br><br>
             <label for="">Mobile NO.</label>

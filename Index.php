@@ -83,7 +83,7 @@ session_start();
             </div>
             <div class="image_container">
                 <img src="index files/Images/OIG4-removebg-preview (1).png" class="image_size" alt="">
-            </div> -->
+            </div> 
         </div>
 
         <div class="t_container">

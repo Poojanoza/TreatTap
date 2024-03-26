@@ -49,7 +49,7 @@ if ($userId === null) {
 
         <div class="h2_container">
           <div class="h2_in1_container">
-            <a href="http://">Home</a>
+            <a href="..\..\index.php">Home</a>
             <a href="..\Product.php">Products</a>
            
             
