@@ -1,0 +1,250 @@
+@font-face {
+    font-family: "MadimiOne";
+    src: url(Fonts/Madimi_One/MadimiOne-Regular.ttf);
+}
+@font-face {
+    font-family: "Merienda";
+    src: url(Fonts/Merienda/Merienda-VariableFont_wght.ttf);
+}
+*{
+    font-family:"Merienda" ;
+}
+body{
+    background: rgba(255, 255, 255, 1);
+}
+
+.main_container{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    padding-top: 20px;    
+    justify-content: center;
+    align-items: center;
+}
+
+.heading_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin:  0 auto;
+}
+
+.h1_container{
+    width: 30%;
+    font-size: 40px;
+    margin:  0 auto;
+
+}
+
+.h2_container{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.h2_container a{
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    /* background-color: beige; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    transition: font-size 0.4s ease-in-out;
+}
+
+.h2_container a:hover{
+    font-weight: bolder;
+    font-size: 21px;
+}
+
+.svg_image{
+    width: 35px;
+    height: 40px;
+}
+.svg_image:hover{
+    width: 40px;
+    height: 40px;
+}
+
+.h2_in1_container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.t_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    background-color: bisque;
+    /* border-top: 2px solid black; */
+}
+
+table{
+    /* padding: 70px; */
+    /* background-color: black; */
+}
+table th{
+    padding: 10px;
+}
+table tr{
+    padding: 10px;
+}
+
+.cart-container{
+    display: flex;
+    /* background-color: yellow; */
+    flex-direction: column;
+}
+.image_size{
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.cart-item{
+    padding: 10px;
+}
+.delete_button{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+
+/* *{
+    font-size: large;
+} */
+
+#checkout-btn{
+    width: 20%;
+    padding: 20px;
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+#checkout-btn a{
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px; */
+    width: 100%;
+    color: black;
+}
+@media screen and (max-width: 800px) {
+    /* General adjustments for smaller screens */
+    body {
+      font-size: 14px; /* Adjust base font size */
+    }
+  
+    .main_container {
+      justify-content: space-between; /* Align content to edges */
+      padding-top: 10px; /* Reduce padding */
+    }
+  
+    .h1_container {
+      width: 100%; /* Expand header to full width */
+      text-align: center; /* Center header text */
+    }
+  
+    .h2_container {
+      width: 100%; /* Expand links to full width */
+      flex-direction: column; /* Stack links vertically */
+    }
+  
+    .cart-container {
+      /* ... other styles ... */
+      overflow-x: auto; /* Enable horizontal scrolling for table */
+    }
+  
+    /* Specific adjustments for smaller content blocks */
+    table,
+    th,
+    td,
+    span,
+    .cart-item {
+      font-size: 1rem; /* Fallback to base font size */
+    }
+  
+    .t_container,
+    .checkout-btn a {
+      font-size: 1.2rem; /* Slightly larger for emphasis */
+    }
+  
+    /* Adjust image size for smaller screens */
+    .image_size {
+      width: 150px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    /* General adjustments for smaller screens */
+    body {
+      font-size: 14px; /* Adjust base font size */
+    }
+  
+    .main_container {
+      flex-direction: column; /* Stack elements vertically */
+      padding: 10px; /* Consistent padding throughout */
+    }
+  
+    .heading_container {
+      /* ... existing styles ... */
+      flex-direction: column; /* Stack header elements */
+      align-items: center; /* Center header elements */
+    }
+  
+    .h1_container {
+      font-size: 1.5rem; /* Increase header size slightly */
+    }
+  
+    .h2_container {
+      /* ... existing styles ... */
+      margin: 10px 0; /* Add spacing between header and content */
+    }
+  
+    .h2_container a {
+      font-size: 1rem; /* Smaller font size for links */
+      padding: 10px; /* Consistent padding for links */
+    }
+  
+    .cart-container {
+      /* ... existing styles ... */
+      overflow-x: auto; /* Enable horizontal scrolling for table */
+    }
+  
+    /* Specific adjustments for smaller content blocks */
+    table,
+    th,
+    td,
+    span,
+    .cart-item {
+      font-size: 0.9rem; /* Smaller font size for content */
+    }
+  
+    .t_container,
+    .checkout-btn a {
+      font-size: 1.2rem; /* Slightly larger for emphasis */
+    }
+  
+    /* Adjust image size for smaller screens */
+    .image_size {
+      width: 120px;
+    }
+  
+    /* Remove unnecessary borders for cleaner look */
+    .image_size,
+    .cart-item {
+      border: none;
+    }
+  }

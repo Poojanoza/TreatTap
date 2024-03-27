@@ -5,6 +5,21 @@ include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
 $userId = $_SESSION['user_id'];
 
 if ($userId === null) {
+  ?>
+
+  <script>
+    alert("Please Login Requreid");
+  </script>
+  <?php
+  header('Location: /TreatTap/SignIn/SignIn.php');
+  exit();
+} else {
+
+$sql = "SELECT * FROM user_info WHERE id=$userId";
+$result= $conn->query($sql);
+$row = $result->fetch_assoc() ;
+
+if ($userId === null) {
 ?>
 
   <script>
@@ -85,23 +100,147 @@ if ($userId === null) {
       font-size: 14px;
     }
   }
+#back_button a{
+  text-decoration: none;
+  color: black;
+}
+.order_table{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: aquamarine;
+  padding: 50px;
+}
+td{
+  padding: 20px;
+  gap: 20px;
+}
+table{
+  border: 1px solid black;
+  padding: 20px;
+
+}
 </style>
 </head>
 <body>
-
+  <h1 id="back_button" >
+  <a href="../Index.php">Back</a></h1>
+  <center>
+<h1>Profile</h1></center>
 <div class="container">
   <div class="profile">
     <img src="—Pngtree—avatar icon profile icon member_5247852.png" alt="Profile Picture">
-    <h1>John Doe</h1>
-    <p>ID: JDE1234</p>
-    <p>Address: 123 Main St, Apt 2B</p>
-    <p>Pincode: 10001</p>
-    <p>Email: john@example.com</p>
-    <p>Mobile No: +1 123-456-7890</p>
-    <a href="#" class="btn">Edit Profile</a>
+    <h1> <?php echo $row['username']?> </h1>
+    <p>ID: <?php echo $row['id']?></p>
+    <p>Address: <?php echo $row['address']?></p>
+    <p>Pincode: <?php echo $row['pincode']?></p>
+    <p>Email: <?php echo $row['email']?></p>
+    <p>Mobile No: <?php echo $row['mobile_no']?></p>
+    <p>State: <?php echo $row['state']?></p>
+    <p>City: <?php echo $row['city']?></p>
+    <a href="change_address.php" class="btn">Edit Profile</a>
   </div>
 </div>
 
+<div class="order_table" >
+  <h1>Ordered Products lists</h1>
+
+  <table>
+    <tr>
+    <td>Product Name:</td>
+    <td>Price</td>
+    <td>Quntatiy</td>
+    <td>Total Price</td>
+    <td>order Date</td>
+    <td>Payment Method</td>
+    <td>Cancel Button</td>
+    </tr>
+    
+    <?php
+            $total_order = 0;
+            $sql = "SELECT * FROM order_info";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $order_id = $row['order_id'];
+
+                    // Fetch product order info
+                    $sql_product = "SELECT * FROM product_order_info WHERE order_id = '$order_id'";
+                    $result_product = $conn->query($sql_product);
+
+                    // Fetch user info
+                    // $user_id = $row['user_id'];
+                    $sql_user = "SELECT * FROM user_info WHERE id = '$userId'";
+                    $result_user = $conn->query($sql_user);
+                    $row_user = $result_user->fetch_assoc();
+
+                    if ($result_product->num_rows > 0) {
+                        while ($row_product = $result_product->fetch_assoc()) { 
+                          $product_id= $row_product['product_id'];
+
+                          $product_image = "SELECT * FROM product_info WHERE id=$product_id";
+                          $result_p=$conn->query($product_image);
+                          $row_product_image= $result_p->fetch_assoc();
+                          // echo $row_product_image['image_url'];
+                          // echo $product_image_url;
+            ?>
+                            <tr class="_tr">
+                                <!-- <td class="_th"><?php echo $row['order_id'] ?></td> -->
+                                <!-- <td class="_th"><?php echo $row_user['username'] ?></td> -->
+
+                                <td class="_th">
+                                <img src="../Admin/Images/<?php echo $row_product_image['image_url']; ?>" width="50px" >
+                                  
+                                <?php echo $row_product['product_name'] ?></td>
+                                <td class="_th"><?php echo $row_product['product_total_price'] ?></td>
+                                <td class="_th"><?php echo $row_product['product_quntatiy'] ?></td>
+
+                                <td class="_th"><?php echo $row_user['address'] ?></td>
+                                <td class="_th"><?php echo $row_product['order_date'] ?></td> 
+                                <td class="_th"><?php echo $row['payment_method'] ?></td>
+                                <td class="_th"><button class="cancel-btn" data-order-id="<?php echo $order_id; ?>">Cancel</button></td>
+                            </tr>
+            <?php
+                        }
+                    }
+                    $total_order++;
+                }
+            }
+            // echo "TOTAL ORDER: " . $total_order;
+            ?>
+
+
+
+  </table>
+</div>
+<script src="jquery-3.7.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Add event listener to "Cancel" button
+    $('.cancel-btn').click(function() {
+        // Get the order ID from the data attribute
+        var orderId = $(this).data('order-id');
+        
+        // Send AJAX request to delete_order.php script
+        $.ajax({
+            url: 'cancel_order.php',
+            type: 'POST',
+            data: { orderId: orderId },
+            success: function(response) {
+                // Reload the page or update the table as needed
+                location.reload(); // Reload the page to reflect changes
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
-<?php }?>
+<?php }
+}?>

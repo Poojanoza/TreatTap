@@ -89,10 +89,13 @@ if (isset($_POST['pay_now'])) {
         } else {
             echo "Error removing products from cart: " . $conn->error;
         }
+        header('Location: ConfirmOrder.php');
+        exit();
+
     } else {
         echo "No products in cart.<br>";
     }    
-
+   
 }
 }
 
@@ -136,7 +139,7 @@ if (isset($_POST['pay_now'])) {
                 </h1>
             </div>
             <div>
-                <button> <a href="../TreatTap/Connection/Connection.php">Back</a> </button>
+                <button> <a href="../../../index.php">Back</a> </button>
             </div>
         </div>
     </div>

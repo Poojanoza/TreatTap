@@ -68,8 +68,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="SignUp.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="SignUp_style.css">
 </head>
 <body>
 <?php 
@@ -91,52 +91,90 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             </div>';
             }
 ?>
+    <div class="main_container">
 
+        <div class="heading_container">
+            <div class="company_name">
+                TreatTap
+            </div>
+            
+            <div class="back_button">
+                <a href="#">Back</a>
+            </div>
+        </div>
+
+        <div class="heading_title" >
+            Sign Up
+        </div>
+
+        <!-- <div class="two_container"> -->
+
+            <!-- <div class="first_container">
+                <img src="img/images.jpg" alt="">
+            </div> -->
         
-    <div class="container">
-        <form class="signup-form"  action="SignUp.php" method="post">
+        <div class="form_container" >
+            <form action="SignUp.php" method="post" onsubmit="return checkPassword()" >
+            <label for="">Name:</label>
+            <input type="text" placeholder="Enter Your Name" name="username" ><br><br>
+            <label for="">Address</label>
+            <input type="text" placeholder="Enter Your Address" name="address" ><br><br>
+            <label for="">City</label>
+            <input type="text" placeholder="Enter Your city" name="city" ><br><br>
+            <label for="">State</label>
+            <input type="text" placeholder="Enter Your State" name="state" ><br><br>
+            <label for="">Pincode</label>
+            <input type="text" placeholder="Enter Your pincode" name="pincode" ><br><br>
+            <label for="">Mobile NO.</label>
+            <input type="text" placeholder="Enter Your Mobile No" name="mobile_no" ><br><br>
+            <label for="">Email ID</label>
+            <input type="email" placeholder="Enter Your Email" name="email" ><br><br>
+            <label for="">Password:</label>
+            <div class="password_input">
+            <input type="password" placeholder="Enter Your Password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one digit, one uppercase letter, one lowercase letter, and be at least 8 characters long" required>
+            <button type="button" id="showPassword">Show</button>
+            </div><br><br>
+            <label for="">Confirm Password:</label>
+            <div class="password_input">
+                <input type="password" placeholder="Re-Enter Your Password"  id="confirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one digit, one uppercase letter, one lowercase letter, and be at least 8 characters long" required>
+                <button type="button" id="showPassword">Show</button>
+                </div>
+            <br><br><input type="submit" value="Sign In" class="submit_button"> 
+            <br>
+            <a href="/TreatTap/SignIn/SignIn.php">Already your Account ?</a>
 
-      
-            <h2>Sign Up</h2>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="username" >
-            </div>
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" id="name" name="address" >
-            </div>
-            <div class="form-group">
-                <label for="mobile">Mobile Number:</label>
-                <input type="tel" id="mobile" name="mobile_no" >
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" >
-            </div>
-            <div class="form-group">
-                <label for="state">state:</label>
-                <input type="text" id="state" name="state" >
-            </div>
-            <div class="form-group">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" >
-            </div>
-            <div class="form-group">
-                <label for="pincode">Pincode:</label>
-                <input type="text" id="pincode" name="pincode" >
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" >
-            </div>
-            <div class="form-group">
-                <label for="confirm_password">Confirm Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" >
-            </div>
-            <button type="submit" name="submit_button" >Sign Up</button>
-            <a href="/TreapTap/SignIn/SignIn.php">Already your Account ?</a>
-        </form>
+            </form>
+        </div>
+    <!-- </div> -->
+
     </div>
+
+    <script>
+
+function checkPassword() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password != confirmPassword) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        return true;
+    }
+
+        var showPasswordButton = document.getElementById("showPassword");
+        var passwordInput = document.getElementById("password");
+    
+        showPasswordButton.addEventListener("click", function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                showPasswordButton.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                showPasswordButton.textContent = "Show";
+            }
+        });
+    </script>
+    
 </body>
 </html>

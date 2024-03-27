@@ -1,0 +1,122 @@
+@font-face {
+    font-family: "MadimiOne";
+    src: url(Fonts/Madimi_One/MadimiOne-Regular.ttf);
+}
+@font-face {
+    font-family: "Merienda";
+    src: url(Fonts/Merienda/Merienda-VariableFont_wght.ttf);
+}
+*{
+    font-family:"Merienda" ;
+}
+body{
+    background: rgba(255, 255, 255, 1);
+}
+
+.main_container{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 20px;    
+    justify-content: center;
+    align-items: center;
+}
+
+.heading_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.h1_container{
+    width: 50%;
+}
+
+.h1_container a{
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.h2_container{
+    width: 70%;
+}
+
+.first_container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 80%;
+    border-radius: 20px;
+    border: 0.7px solid wheat;
+    overflow: hidden;
+}
+
+.address_container{
+    /* display: flex; */
+    width: 58%;
+    padding: 50px;
+}
+
+.product_info_container{
+    padding: 50px;
+    width: 60%;
+    background-color: #FAF3E9;
+}
+
+.products{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product_info{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    align-items: flex-start;
+    font-weight: 100;
+}
+
+.payment_container{
+    background-color: #FAF3E9;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #e5d6c0;
+    
+}
+
+#change_address_button{
+    width: 50%;
+    margin: 0 auto;
+    padding: 15px;
+    height: 31px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.change_address_link{
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: 300;
+    transition: font-weight 0.3s ease-in-out;
+}
+.change_address_link:hover{
+    font-weight: bolder;
+}
+#heading{
+    display: flex;
+    flex-direction: row;
+    font-size: 22px;
+    padding: 0px;
+    /* gap: 20px; */
+}
