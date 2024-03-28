@@ -27,7 +27,6 @@ session_start();
                 <div class="h2_in1_container">
                     <a href="Index.php">Home</a>
                     <a href="Product Page/Product.php">Products</a>
-                    <!-- <a href="http://">About Us</a> -->
                     <a href="Product Page/Cart Page/cart.php">Cart <img src="index files/Icons/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt=""> </a>
                     <a href="Profile Page/Profile.php"> <img class="svg_image"
                             src="index files/Icons/account_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" width="30px">
@@ -48,6 +47,8 @@ session_start();
                        
 
                     <?php } else { ?>
+                    <a href="OrderHistory/OrderHistory.php">Ordered <img src="index files/Icons/local_shipping_FILL0_wght400_GRAD0_opsz24.svg" alt=""> </a>
+
                         <a href="index files/log_out.php">Log Out</a>
                     <?php } ?>
                 </div>
@@ -77,7 +78,7 @@ session_start();
                     of New Rose Sweets.Every bite is a symphony of flavor,
                     crafted with love for your pure enjoyment.
                     <br>
-                    <a class="button_buy" href="http://">Try Now</a>
+                    <a class="button_buy" href="Product Page/Product.php">Try Now</a>
                     <!-- <button  >Buy Now</button>  -->
                 </div>
             </div>

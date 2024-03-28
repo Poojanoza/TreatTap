@@ -94,7 +94,7 @@ if (isset($_POST['add_to_cart'])) {
             <div class="h2_container">
                 <div class="h2_in1_container">
                     <a href="../Index.php">Home</a>
-                    <a href="http://">Products</a>
+                    <!-- <a href="http://">Products</a> -->
                     <!-- <a href="http://">About Us</a>
                     <a href="http://">Extra</a>
                     <a href="SignIn/SignIn.html">Sign In</a>
@@ -102,9 +102,16 @@ if (isset($_POST['add_to_cart'])) {
                     <a href="Cart Page\cart.php"> <img class="svg_image"
                             src="Icons/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Cart</a>
 
-                    <a href="http://"> <img class="svg_image"
+                    <a href="../Profile Page/Profile.php"> <img class="svg_image"
                             src="Icons/account_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" width="30px">
-                    </a>
+                            <?php
+                        if (isset($_SESSION['username'])) {
+                            echo $_SESSION['username'];
+                        } else {
+                            echo "Gusset";
+                        }
+                        ?>
+                        </a>
                     <!-- <a href="http://">Log Out</a> -->
 
                 </div>
@@ -121,7 +128,7 @@ if (isset($_POST['add_to_cart'])) {
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search products...">
-            <button onclick="searchProducts()" id="search_button" > <img src="Icons/search_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
+            <button onclick="searchProducts()" id="search_button" >Search <img src="Icons/search_FILL0_wght400_GRAD0_opsz24.svg" alt=""></button>
         </div>
         <!-- <div class="t_container">
             Our Products

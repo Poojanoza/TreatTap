@@ -144,17 +144,18 @@ table{
 </div>
 
 <div class="order_table" >
-  <h1>Ordered Products lists</h1>
+  <h1>Ordered Products history</h1>
 
   <table>
     <tr>
+    <td>Product Image:</td>
     <td>Product Name:</td>
     <td>Price</td>
     <td>Quntatiy</td>
     <td>Total Price</td>
     <td>order Date</td>
     <td>Payment Method</td>
-    <td>Cancel Button</td>
+    <!-- <td>Cancel Button</td> -->
     </tr>
     
     <?php
@@ -191,16 +192,17 @@ table{
                                 <!-- <td class="_th"><?php echo $row_user['username'] ?></td> -->
 
                                 <td class="_th">
-                                <img src="../Admin/Images/<?php echo $row_product_image['image_url']; ?>" width="50px" >
-                                  
+                                <img src="../Admin/Images/<?php echo $row_product_image['image_url']; ?>" width="120px" >
+                                  </td>
+                                  <td class="_th" >
                                 <?php echo $row_product['product_name'] ?></td>
                                 <td class="_th"><?php echo $row_product['product_total_price'] ?></td>
                                 <td class="_th"><?php echo $row_product['product_quntatiy'] ?></td>
 
-                                <td class="_th"><?php echo $row_user['address'] ?></td>
+                                <td class="_th"><?php echo $row_product['product_total_price'] ?></td>
                                 <td class="_th"><?php echo $row_product['order_date'] ?></td> 
                                 <td class="_th"><?php echo $row['payment_method'] ?></td>
-                                <td class="_th"><button class="cancel-btn" data-order-id="<?php echo $order_id; ?>">Cancel</button></td>
+                                <!-- <td class="_th"><button class="cancel-btn" data-order-id="<?php echo $order_id; ?>">Cancel</button></td> -->
                             </tr>
             <?php
                         }

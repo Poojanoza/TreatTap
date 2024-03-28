@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     // $username= $_POST['username'];
 
 
-    if($email == 'admin@gmail.com' && $password == 'admin'){
+    if($email == 'admin@gmail.com' && $password == 'Admin123'){
         header("Location: /TreatTap/Admin/Admin.php");
         exit();
     }else{
