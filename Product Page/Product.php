@@ -76,7 +76,7 @@ if (isset($_POST['add_to_cart'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Product_styles.css">
+    <link rel="stylesheet" href="Product_style.css">
     <title>Product Page</title>
     <style>
 
@@ -208,11 +208,38 @@ if (isset($_POST['add_to_cart'])) {
                     }
                 }
             </script>
-            <footer>
-                <p>&copy; 2024 TreapTap Sweet Store E-Commerce website</p>
-            </footer>
 
         </div>
+        <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://www.whatsapp.com/">WhatsApp</a></li>
+          <li><a href="https://twitter.com/?lang=en">Twitter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Science City Road <br>Ahmedabad, India</p>
+        <p>Phone: +1234567890</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="Product Page/Product.php">Products</a></li>
+          <li><a href="AboutUs/aboutus.php">About Us</a></li>
+          <!-- <li><a href="contact.html">Contact Us</a></li> -->
+          <!-- Add more links as needed -->
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 TreatTap Website. All Rights Reserved.</p>
+    <p class="copyright"> Made By Poojan Oza.</p>
+  </footer>
+
 </body>
 
 </html>

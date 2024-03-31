@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="stylesheet" href="Admin.css">
+    <link rel="stylesheet" href="Adminstyle.css">
 </head>
 <body>
     <header class="admin-header">
-        <h1>Welcome, Admin</h1>
-        <a href="logout.php">Logout</a>
+    <center>    
+    <h1>Admin Panel</h1>
+        </center>
+        <a href="../Index.php">Logout</a>
     </header>
+    
 
   
-
+    <div class="container" >
     <nav class="admin-nav">
         <ul>
             <li><a href="users.php">Users Management</a></li>
@@ -21,6 +24,7 @@
             <li><a href="order_info.php">Order Management</a></li>
         </ul>
     </nav>
+    </div>
 
 </body>
 </html>

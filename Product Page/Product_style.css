@@ -1,0 +1,481 @@
+@font-face {
+    font-family: "MadimiOne";
+    src: url(Fonts/Madimi_One/MadimiOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Merienda";
+    src: url(Fonts/Merienda/Merienda-VariableFont_wght.ttf);
+}
+
+* {
+    font-family: "Merienda";
+}
+
+body {
+    background: rgba(255, 255, 255, 1);
+}
+
+.main_container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    padding-top: 20px;
+}
+
+.heading_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.h1_container {
+    width: 30%;
+    font-size: 40px;
+    margin: 0 auto;
+
+}
+
+.h2_container {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.h2_container a {
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    /* background-color: beige; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    transition: font-size 0.4s ease-in-out;
+}
+
+.h2_container a:hover {
+    font-weight: bolder;
+    font-size: 21px;
+}
+
+.svg_image {
+    width: 35px;
+    height: 40px;
+}
+
+.svg_image:hover {
+    width: 40px;
+    height: 40px;
+}
+
+.h2_in1_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.t_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    background-color: bisque;
+    /* border-top: 2px solid black; */
+}
+
+.fourth_container {
+    width: 100%;
+    /* background-color: gold; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    gap: 80px 40px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.product_box {
+    width: 25%;
+    height: auto;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    overflow: hidden;
+    padding-bottom: 25px;
+    align-items: center;
+    box-shadow: 0px 0px lightblue;
+    /* transition: box-shadow 0.4s ease-in; */
+    transition: transform 0.3s, box-shadow 0.3s;
+
+}
+
+.product_img_box img {
+    width: 100%;
+    object-fit: cover;
+    transition: width 0.5s ease-in-out;
+}
+
+.product_cart_button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+form {
+    width: 80%;
+}
+
+.add_cart {
+    width: 100%;
+    padding: 15px;
+    height: auto;
+    background-color: white;
+    color: black;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid black;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.add_cart:hover {
+    background-color: rgba(214, 231, 237, 0.963);
+    color: black;
+    font-weight: bolder;
+}
+
+.product_text_area {
+    display: flex;
+    width: 80%;
+    row-gap: 5px;
+    flex-direction: column;
+    justify-content: left;
+}
+
+
+.star_rating img {
+    width: 40%;
+
+}
+
+.product_image {
+    opacity: 0.9;
+}
+
+.product_image:hover {
+    opacity: 1;
+}
+
+.product_box:hover {
+    box-shadow: 10px 10px lightblue;
+    background-color: bisque;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid black;
+}
+
+
+@media screen and (max-width:600px) {
+    .main_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .heading_container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        flex-direction: column;
+    }
+
+    .h1_container,
+    .h2_in1_container,
+    .h2_container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .text_container,
+    .image_container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image_size {
+        width: 80%;
+    }
+
+    .t_container {
+        font-size: 35px;
+    }
+
+    .s_container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .products {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .product_box {
+        width: 90%;
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .product_cart_button {
+        width: 80%;
+    }
+
+    .show_more a {
+        width: 40%;
+    }
+
+    .product_img_box {
+        width: 100%;
+    }
+
+    .fifth_container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        /* gap: 200px; */
+    }
+
+    .review_text {
+        width: 100%;
+    }
+
+    .customer_img img {
+        width: 80%;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .main_container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .heading_container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        flex-direction: row;
+    }
+
+    .h1_container,
+    .h2_in1_container,
+    .h2_container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        font-size: 20px;
+    }
+
+    .h2_container a {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .svg_image {
+        width: 20px;
+    }
+
+    .text_container,
+    .image_container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text_container_in_one {
+        font-size: 30px;
+    }
+
+    .text_container_in_secound {
+        font-size: 15px;
+    }
+
+    .image_size {
+        width: 100%;
+    }
+
+    .t_container {
+        font-size: 35px;
+    }
+
+    .s_container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .products {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-color: rgb(251, 249, 246);
+        flex-direction: row;
+        gap: 40px;
+    }
+
+    .product_cart_button {
+        width: 60%;
+        height: 5%;
+    }
+
+    .show_more a {
+        width: 20%;
+    }
+
+    .product_img_box {
+        width: 70%;
+    }
+}
+
+.search-container {
+    width: 30%;
+    align-self: center;
+    display: flex;
+    border: 2px solid black;
+    flex-direction: row;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+#searchInput {
+    width: 100%;
+    border-style: hidden;
+    padding: 14px 24px;
+    /* background-color: #FFE4C4; */
+    border: 0 hidden #eee;
+    /* /* border-radius: 20px;   */
+
+}
+
+input#searchInput {
+    outline: none;
+}
+
+#search_button {
+    width: 100px;
+    border: 2px solid;
+    border-radius: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#search_button:hover {
+    background-color: #FFE4C4;
+}
+
+
+footer {
+    background-color: #FFE4C4;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .social-links li,
+  .footer-links li {
+    margin-bottom: 5px;
+  }
+  
+  .social-links li a,
+  .footer-links li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .social-links li a:hover,
+  .footer-links li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Styling */
+  
+  /* Mobile */
+  @media screen and (max-width: 576px) {
+    .footer-section {
+      flex-basis: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Tablet */
+  @media screen and (min-width: 577px) and (max-width: 992px) {
+    .footer-section {
+      flex-basis: calc(50% - 20px);
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Desktop */
+  @media screen and (min-width: 993px) {
+    .footer-section {
+      flex-basis: calc(33.33% - 20px);
+      margin-bottom: 0;
+    }
+  }

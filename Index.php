@@ -3,8 +3,6 @@ session_start();
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +10,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treat-Tap</title>
-    <link rel="stylesheet" href="index files/index_style.css">
+    <link rel="stylesheet" href="index files/index_styles.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -27,6 +28,7 @@ session_start();
                 <div class="h2_in1_container">
                     <a href="Index.php">Home</a>
                     <a href="Product Page/Product.php">Products</a>
+                    <a href="AboutUs/aboutus.php">About Us</a>
                     <a href="Product Page/Cart Page/cart.php">Cart <img src="index files/Icons/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg" alt=""> </a>
                     <a href="Profile Page/Profile.php"> <img class="svg_image"
                             src="index files/Icons/account_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" width="30px">
@@ -61,7 +63,7 @@ session_start();
         </div>
         <video autoplay muted loop>
 
-<source src="index files/TreatTap Intro - Made with Clipchamp (1).mp4" type="video/mp4" ><h1>history</h1>
+<source src="index files/TreatTap Intro New - Made with Clipchamp (2).mp4" type="video/mp4" ><h1>history</h1>
 
 </video>
         <div class="s_container">
@@ -192,19 +194,36 @@ session_start();
                 </div>
             </div>
         </div>
-        <div class="six_container" >
-            <div class="sf_container" >
-                        <h3>Connect With Us</h3>
-                        <div class="icons" >
-                        <img src="index files/Icons/facebook.svg" alt="" width="20px" >
-                        <img src="index files/Icons/instagram.svg" alt=""width="20px">
-                        <img src="index files/Icons/twitter.svg" alt=""width="20px">
-                        <img src="index files/Icons/linkedin.svg" alt=""width="20px"></div>
-            </div>
-            <div class="ss_container" >
-                        <h3>Contact Us</h3>
-            </div>
-        </div>
+
+        <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://www.whatsapp.com/">WhatsApp</a></li>
+          <li><a href="https://twitter.com/?lang=en">Twitter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Science City Road <br>Ahmedabad, India</p>
+        <p>Phone: +1234567890</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="Product Page/Product.php">Products</a></li>
+          <li><a href="AboutUs/aboutus.php">About Us</a></li>
+          <!-- <li><a href="contact.html">Contact Us</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2024 TreatTap Website. All Rights Reserved.</p>
+    <p class="copyright"> Made By Poojan Oza.</p>
+  </footer>
+
 
     </div>
 
