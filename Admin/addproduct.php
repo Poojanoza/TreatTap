@@ -29,14 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_query($conn, $sql)) {
             echo "Successfully Uploaded";
             ?>
-                <script>  alert("Succesfully Uploaded") </script>
+                <script>  alert("Product Added Successfully") </script>
             <?php 
-
+            header("location:products.php");
+            exit();
         } else {
             echo "Error: " . mysqli_error($conn);
         }
     } else {
-        echo "Form not submitted";
+        echo "Product not added";
     }
 }
 ?>
@@ -66,6 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         form {
             background-color: #fff;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px;
@@ -103,6 +106,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         button:hover {
             background-color: #45a049;
         }
+        .cancel_button{
+         width: 60%;
+         align-self: center;
+         text-align: center;
+         text-decoration: none;
+         border: 2px solid black ;   
+         padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -123,10 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="productImage">Product Image:</label>
         <input type="file" id="productImage" name="productImage" accept="image/*" required>
 
-        <input type="submit" name="submit" value="Upload Image" > 
-
-        <a href="products.php"> add Product</a>
-         <a href="products.php"> Cancel</a>
+        <input type="submit" name="submit" value="Add Product" > 
+        <!-- <a href="products.php"> add Product</a> -->
+         <a href="products.php" class="cancel_button" > Cancel</a>
     </form>
 
 </body>

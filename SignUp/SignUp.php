@@ -137,7 +137,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             <label for="">Confirm Password:</label>
             <div class="password_input">
                 <input type="password" placeholder="Re-Enter Your Password"  id="confirmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one digit, one uppercase letter, one lowercase letter, and be at least 8 characters long" required>
-                <button type="button" id="showPassword">Show</button>
+                <!-- <button type="button" id="showPassword">Show</button> -->
                 </div>
             <br><br><input type="submit" value="Sign In" class="submit_button"> 
             <br>
