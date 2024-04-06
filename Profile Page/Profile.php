@@ -45,6 +45,19 @@ if ($userId === null) {
     padding: 0;
     background-color: #f4f4f4;
   }
+  @font-face {
+    font-family: "MadimiOne";
+    src: url(Fonts/Madimi_One/MadimiOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Merienda";
+    src: url(Fonts/Merienda/Merienda-VariableFont_wght.ttf);
+}
+
+* {
+    font-family: "Merienda";
+}
 
   .container {
     max-width: 800px;
@@ -168,7 +181,7 @@ table{
                     $order_id = $row['order_id'];
 
                     // Fetch product order info
-                    $sql_product = "SELECT * FROM product_order_info WHERE order_id = '$order_id'";
+                    $sql_product = "SELECT * FROM product_order_info WHERE order_id = '$order_id' AND user_id='$userId'";
                     $result_product = $conn->query($sql_product);
 
                     // Fetch user info
@@ -177,7 +190,7 @@ table{
                     $result_user = $conn->query($sql_user);
                     $row_user = $result_user->fetch_assoc();
 
-                    if ($result_product->num_rows > 0) {
+                    if ($result_user->num_rows > 0) {
                         while ($row_product = $result_product->fetch_assoc()) { 
                           $product_id= $row_product['product_id'];
 

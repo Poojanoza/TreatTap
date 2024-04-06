@@ -93,6 +93,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             <br>
             <center>
             <a href="/TreatTap/SignUp/SignUp.php">New User?</a></center>
+            <a href="../ForgetPassword/ForgetPassword.php">Forget Password?</a></center>
             </form>
         </div>
     <!-- </div> -->
