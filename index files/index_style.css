@@ -11,7 +11,7 @@
 }
 body{
     background: rgba(255, 255, 255, 1);
-    padding: 10px;
+    padding: 20px;
 }
 
 .main_container{
@@ -521,6 +521,10 @@ footer {
   .social-links li a:hover,
   .footer-links li a:hover {
     text-decoration: underline;
+  }
+
+  ul{
+    list-style: none;
   }
   
   /* Responsive Styling */
