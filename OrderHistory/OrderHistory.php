@@ -210,7 +210,7 @@ if ($userId === null) {
                                                 </td>
 
                                                 <td class="_th">
-                                                    <?php echo $row_user['address'] ?>
+                                                    <?php echo $row_product['product_total_price'] ?>
                                                 </td>
                                                 <td class="_th">
                                                     <?php echo $row_product['order_date'] ?>
@@ -226,13 +226,13 @@ if ($userId === null) {
                                     }
                                     $total_order++;
                                 }
-                        }else{
+                        } else {
 
-?>
-        <h1>Your Latest Order not find</h1>
+                            ?>
+                                <h1>Your Latest Order not find</h1>
 
 
-<?php
+                                <?php
 
 
                         }
@@ -243,31 +243,31 @@ if ($userId === null) {
                     </div>
                 </div>
                 <script src="jquery-3.7.1.min.js"></script>
-<script>
-  $(document).ready(function() {
-    // Add event listener to "Cancel" button
-    $('.cancel-btn').click(function() {
-        // Get the order ID from the data attribute
-        var orderId = $(this).data('order-id');
-        
-        // Send AJAX request to delete_order.php script
-        $.ajax({
-            url: 'cancel_order.php',
-            type: 'POST',
-            data: { orderId: orderId },
-            success: function(response) {
-                // Reload the page or update the table as needed
-                location.reload(); // Reload the page to reflect changes
-            },
-            error: function(xhr, status, error) {
-                // Handle errors
-                console.error(xhr.responseText);
-            }
-        });
-    });
-});
-</script>
-            </body>
+                <script>
+                    $(document).ready(function () {
+                        // Add event listener to "Cancel" button
+                        $('.cancel-btn').click(function () {
+                            // Get the order ID from the data attribute
+                            var orderId = $(this).data('order-id');
+
+                            // Send AJAX request to delete_order.php script
+                            $.ajax({
+                                url: 'cancel_order.php',
+                                type: 'POST',
+                                data: { orderId: orderId },
+                                success: function (response) {
+                                    // Reload the page or update the table as needed
+                                    location.reload(); // Reload the page to reflect changes
+                                },
+                                error: function (xhr, status, error) {
+                                    // Handle errors
+                                    console.error(xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
+        </body>
 
         </html>
         <?php
