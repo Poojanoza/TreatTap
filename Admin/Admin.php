@@ -11,7 +11,7 @@
     <center>    
     <h1>Admin Panel</h1>
         </center>
-        <a href="../Index.php">Logout</a>
+        <a href="../index.html">Logout</a>
     </header>
     
 

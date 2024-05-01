@@ -39,9 +39,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             // echo "Successfully inserted";
             $_SESSION['username']= $username;
             $_SESSION['user_id'] = mysqli_insert_id($conn); // Get the ID of the last inserted row
-            header("Location: /TreatTap/Index.php");
+            header("Location: /TreatTap/index.html");
             // echo "Welcome to ".$_SESSION['email_id'];
-            // header("Location: /TreatTap/Index.php");
+            // header("Location: /TreatTap/index.html");
             $success=1;
 
             exit();
@@ -99,7 +99,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             </div>
             
             <div class="back_button">
-                <a href="../Index.php">Back</a>
+                <a href="../index.html">Back</a>
             </div>
         </div>
 

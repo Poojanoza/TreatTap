@@ -13,7 +13,7 @@
       <h1>TreatTap Sweet Store</h1>
       <nav>
         <ul>
-          <li><a href="../Index.php">Home</a></li>
+          <li><a href="../index.html">Home</a></li>
           <li><a href="../Product Page/Product.php">Products</a></li>
           <li><a href="aboutus.php">About</a></li>
         </ul>

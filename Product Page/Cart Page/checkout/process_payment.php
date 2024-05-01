@@ -139,7 +139,7 @@ if (isset($_POST['pay_now'])) {
                 </h1>
             </div>
             <div>
-                <button> <a href="../../../index.php">Back</a> </button>
+                <button> <a href="../../../index.html">Back</a> </button>
             </div>
         </div>
     </div>

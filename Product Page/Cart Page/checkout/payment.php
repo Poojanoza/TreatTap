@@ -229,7 +229,7 @@ if ($final_value == "online") {
                     <h1></h1>
 
 
-                    <a href="../../../index.php">Go Back</a>
+                    <a href="../../../index.html">Go Back</a>
 
 
 

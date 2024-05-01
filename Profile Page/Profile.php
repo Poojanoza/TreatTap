@@ -138,7 +138,7 @@ table{
 </head>
 <body>
   <h1 id="back_button" >
-  <a href="../Index.php">Back</a></h1>
+  <a href="../index.html">Back</a></h1>
   <center>
 <h1>Profile</h1></center>
 <div class="container">
