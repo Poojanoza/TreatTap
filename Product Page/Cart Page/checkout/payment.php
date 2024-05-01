@@ -9,7 +9,7 @@ $payment_type = null;
 if (isset($_POST['submit'])) {
     $payment_type = $_POST['payment_mode'];
     $total_amount = $_POST['total_amount'];
-    echo "<br>payment mode          " . $payment_type;
+    // echo "<br>payment mode          " . $payment_type;
 } else {
     echo "not selected payment method please select";
 }
@@ -20,7 +20,7 @@ $final_value = $payment_type;
 
 $final_total_value = $total_amount;
 
-echo "final value is " . $final_value;
+// echo "final value is " . $final_value;
 
 if ($final_value == "online") {
     // header('Location: process_payment.php ');
@@ -126,8 +126,9 @@ if ($final_value == "online") {
 
             </form>
 
-
-            <?php
+            <img src="240_F_473846184_0k637f6855ZJqaulKqAmgJTEVGVibR1P.jpg" alt="" width="400px" >
+            
+        <?php
 
 } else if ($final_value == "offline") {
     // echo "Order on the way";
