@@ -1,5 +1,5 @@
 <?php
-
+// Payment page
 session_start();
 $userId = $_SESSION['user_id'];
 
