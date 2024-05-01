@@ -27,7 +27,7 @@ body{
     Your Order is One the Way
     </h1>
     <h1>Thank You For Shopping</h1>
-    <button> <a href="../../../index.php">Back</a> </button>
+    <button> <a href="../../../index.html">Back</a> </button>
     </center>
 </body>
 </html>

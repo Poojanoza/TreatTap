@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 $_SESSION['username']= $row['username'];
                 $_SESSION['user_id']=$row['id'];
                 // echo "Welcome to ".$_SESSION['email_id'];
-                header("Location: /TreatTap/Index.php");
+                header("Location: /TreatTap/index.html");
                 exit();
                 
                 }else{
@@ -64,7 +64,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             </div>
             
             <div class="back_button">
-                <a href="../Index.php">Back</a>
+                <a href="../index.html">Back</a>
             </div>
         </div>
 

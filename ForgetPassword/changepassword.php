@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     mysqli_query($conn,"UPDATE `user_info` SET 
             password='$password' WHERE id=$user_id");
 
-header("Location: /TreatTap/index.php");
+header("Location: /TreatTap/index.html");
         exit();
 }
 $sql = "SELECT * from user_info where id='$user_id' ";

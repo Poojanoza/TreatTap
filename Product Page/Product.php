@@ -93,7 +93,7 @@ if (isset($_POST['add_to_cart'])) {
 
             <div class="h2_container">
                 <div class="h2_in1_container">
-                    <a href="../Index.php">Home</a>
+                    <a href="../index.html">Home</a>
                     <!-- <a href="http://">Products</a> -->
                     <!-- <a href="http://">About Us</a>
                     <a href="http://">Extra</a>
