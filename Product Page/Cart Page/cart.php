@@ -49,7 +49,7 @@ if ($userId === null) {
 
         <div class="h2_container">
           <div class="h2_in1_container">
-            <a href="..\..\index.php" hidden ></a>
+            <a href="..\..\index.html" hidden ></a>
             <a href="..\Product.php">Back</a>
            
             

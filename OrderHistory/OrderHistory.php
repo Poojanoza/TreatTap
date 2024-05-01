@@ -128,7 +128,7 @@ if ($userId === null) {
 
         <body>
             <h1 id="back_button">
-                <a href="../Index.php">Back</a>
+                <a href="../index.html">Back</a>
             </h1>
             <center>
 
