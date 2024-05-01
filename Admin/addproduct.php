@@ -9,7 +9,7 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("" . $conn->connect_error);
 } else {
-    echo "cc done";
+    // echo "cc done";
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

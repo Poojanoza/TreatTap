@@ -21,10 +21,10 @@ if ($userId === null) {
 
   if($row_count <=0){
     $value = false;
-    echo "0 cart products";
+    // echo "0 cart products";
   }else{
     $value=true;
-    echo "cart in products";
+    // echo "cart in products";
   }
   ?>
 
@@ -91,6 +91,7 @@ if ($userId === null) {
             <th></th>
             <th>Poruduct name
             </th>
+            <th>Weight</th>
             <th>Price</th>
             <th>Quantity</th>
             <th> Total Price</th>
@@ -114,6 +115,7 @@ if ($userId === null) {
                       <?php echo $row["product_name"]; ?>
                     </span>
                   </th>
+                  
                   <th>
                     <span class="product-price<?php echo $row['product_id']; ?>" id="pp">
                       <?php echo $row["product_price"]; ?>

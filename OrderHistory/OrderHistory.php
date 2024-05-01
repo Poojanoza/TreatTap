@@ -210,7 +210,7 @@ if ($userId === null) {
                                                 </td>
 
                                                 <td class="_th">
-                                                    <?php echo $row_user['address'] ?>
+                                                    <?php echo $row_product['product_total_price'] ?>
                                                 </td>
                                                 <td class="_th">
                                                     <?php echo $row_product['order_date'] ?>

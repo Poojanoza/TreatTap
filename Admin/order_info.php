@@ -109,7 +109,7 @@ include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
                 <th class="_th">Quntatiy</th>
                 <th class="_th">Total Amount</th>
                 <th class="_th">Payment Method</th>
-                <th class="_th">Confirm or not ?</th>
+                <!-- <th class="_th">Confirm or not ?</th> -->
             </tr>
             <!-- <tr class="_tr"> -->
             <?php
@@ -143,7 +143,7 @@ include 'C:\xampp\htdocs\TreatTap\Connection\Connection.php';
                                 <td class="_th"><?php echo $row_product['product_quntatiy'] ?></td>
                                 <td class="_th"><?php echo $row_product['product_total_price'] ?></td>
                                 <td class="_th"><?php echo $row['payment_method'] ?></td>
-                                <td class="_th"><button>Button</button></td>
+                                <!-- <td class="_th"><button>Button</button></td> -->
                             </tr>
             <?php
                         }

@@ -24,7 +24,7 @@ $Id= $_GET['ID'];
 
 
 mysqli_query($conn,"UPDATE `product_info` SET 
-            product_name='$productName',price='$productPrice',description='$productDescription' WHERE Id=$Id");
+            product_name='$productName',price='$productPrice', description='$productDescription' WHERE Id=$Id");
 
 header("location:products.php");
 

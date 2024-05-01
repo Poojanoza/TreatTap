@@ -9,7 +9,7 @@ $conn=mysqli_connect($servername, $username, $password, $database);
 if ($conn->connect_error) { 
     die("". $conn->connect_error);
 }else{
-    echo "Congulation Poojan You Succesfully Achive Your first goal";
+    echo "Done";
 }
 
 $Id= $_GET['ID'];
@@ -107,7 +107,7 @@ $row = $result->fetch_assoc() ;
         <input type="text" id="address" name="product_price" value=" <?php echo $row["price"]; ?>" >
 
         <label for="password">Description:</label>
-        <input type="text" id="password" name="product_Description" value=" <?php echo $row["description"]; ?> ">
+        <input type="text" id="password" name="product_description" value=" <?php echo $row["description"]; ?> ">
 
         <button type="submit">Save</button>
     </form>

@@ -112,7 +112,8 @@ $row_count = mysqli_num_rows($result);
         <th>Product Image</th>
         <th>Product Name</th>
         <th>Price</th>
-        <th>Action</th>
+        <th>Weight</th>
+        <th>Modify</th>
       </tr>
     </thead>
     <tbody>
@@ -134,6 +135,9 @@ $row_count = mysqli_num_rows($result);
             </td>
             <td>
               <?php echo $row["price"]; ?>
+            </td>
+            <td>
+              <?php echo $row["description"]; ?>
             </td>
             <td>
               <a href='edit_product.php? ID= <?php echo $row["Id"] ?> ' class="btn btn-edit">Edit</a>
