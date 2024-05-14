@@ -37,7 +37,7 @@ We welcome contributions from the community to help improve TreatTap Sweet Store
 
 If you have any questions, feedback, or inquiries, don't hesitate to reach out to us:
 
-- **Email**: poojanoza89@gmail.com
+- **Linkedin**: https://in.linkedin.com/in/poojan-oza-b08775248?original_referer=https%3A%2F%2Fwww.google.com%2F
   
   
 Happy shopping with TreatTap Sweet Store!
